@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import LikeButton from './like-button';
 
 function Header({ title }) {
   return <h1>{title ? title : "Default title"}</h1>;
@@ -10,19 +10,9 @@ function Footer() {
 
 export default function HomePage() {
   const names = ["Ada Lovelace", "Grace Hopper", "Margaret Hamilton"];
-  const [likes, setLikes] = useState(0);
-
-  function handleClickPlus() {
-    setLikes(likes + 1);
-  }
-
-  function handleClickLess() {
-    if (likes <= 0) return;
-    setLikes(likes - 1);
-  }
 
   return (
-    <div>
+    <>
       <Header title="Junior. Preview. Developer. Mega." />
 
       <ul>
@@ -31,11 +21,9 @@ export default function HomePage() {
         ))}
       </ul>
 
-      <p>({likes})</p>
+      <LikeButton />
 
-      <button onClick="{handleClickLess}">-</button>
-      <button onClick="{handleClickPlus}">+</button>
       <Footer />
-    </div>
+    </>
   );
 }
